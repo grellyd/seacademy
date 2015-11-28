@@ -90,4 +90,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="pitch_fragment_placeholder_text">Hello! This is my pitch</string>
 </resources>

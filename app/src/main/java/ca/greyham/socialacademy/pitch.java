@@ -40,6 +40,9 @@ public class pitch extends Fragment {
      * @return A new instance of fragment pitch.
      */
 
+    //TODO: set video source
+    //TODO: Set video blurb
+
     public static pitch newInstance(String pitchName, String pitchBlurb) {
         pitch fragment = new pitch();
         Bundle args = new Bundle();

@@ -9,11 +9,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="ca.greyham.socialacademy.MainActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/seacademy"
+        style="@style/txt_company"
+        />
     <Button
         android:id="@+id/buttonFindProject"
         android:layout_width="match_parent"
         android:onClick="buttonFindProject_Click"
-        android:layout_weight="1"
+        android:layout_weight="8"
         android:layout_height="0dp"
         android:text="Find a\n project!"
         style="@style/find_proj"
@@ -22,7 +29,7 @@
     <Button
         android:id="@+id/buttonProfile"
         android:layout_width="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="8"
         android:layout_height="0dp"
         android:text="See your\nProfile"
         style="@style/profile" />

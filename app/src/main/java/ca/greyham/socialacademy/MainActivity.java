@@ -15,9 +15,7 @@ public class MainActivity extends Activity {
 
     public void buttonFindProject_Click(View v)
     {
-        Intent pitchscrollactivity = new Intent(MainActivity.this, Pitchscrollactivity.class);
-//        DeadDrop newDeaddrop = new DeadDrop();
-//        startCardViewActivity.putExtra("DeadDrop", newDeaddrop.toString());
+        Intent pitchscrollactivity = new Intent(MainActivity.this, PitchScrollActivity.class);
         startActivity(pitchscrollactivity);
     }
 

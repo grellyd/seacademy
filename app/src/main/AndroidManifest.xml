@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Pitchscrollactivity"
+            android:name=".PitchScrollActivity"
             android:label="@string/title_activity_pitchscrollactivity"></activity>
     </application>
 

@@ -69,12 +69,12 @@ public class Pitch extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void buttonApply_Click(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-//
+
 //    @Override
 //    public void onAttach(Context context) {
 //        super.onAttach(context);

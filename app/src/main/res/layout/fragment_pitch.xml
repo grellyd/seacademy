@@ -30,6 +30,8 @@
         android:layout_width="match_parent"
         android:text="@string/pitch_button"
         style="@style/bt_apply"
+        android:id="@+id/buttonApply"
+        android:onClick="buttonApply_Click"
         />
 
 </LinearLayout>

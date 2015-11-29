@@ -7,13 +7,15 @@
     <string name="title_activity_pitchactivity">pitchactivity</string>
     <string name="title_activity_pitchscrollactivity">pitchscrollactivity</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="pitch_button">Apply!</string>
+    <string name="pitch_button">Pitch in!</string>
     <string name="seacademy">Social Enterprise Academy</string>
     <string name="name">John Mark Hobbes Allanidshuh</string>
     <string name="bio">Bio</string>
     <string name="txt_bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin, mauris eu mollis condimentum, diam purus tempus ligula, nec fringilla orci turpis et ex. </string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin, mauris eu mollis condimentum, diam purus tempus ligula, nec fringilla orci turpis et ex. </string>
     <string name="bt_contact">Contact</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="prev_proj">Previous Projects</string>
+    <string name="sponsor">Sponsored By Coca-Cola</string>
 </resources>

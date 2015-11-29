@@ -5,7 +5,7 @@ public class PitchDetails {
     private String pitchBlurb;
     private String pitchCampaignName;
     private String videoURL;
-    private String sponsor;
+    private String pitchSponsor;
     private String id;
 
     public String getId() {
@@ -48,11 +48,11 @@ public class PitchDetails {
         this.videoURL = videoURL;
     }
 
-    public String getSponsor() {
-        return sponsor;
+    public String getPitchSponsor() {
+        return pitchSponsor;
     }
 
-    public void setSponsor(String sponsor) {
-        this.sponsor = sponsor;
+    public void setPitchSponsor(String pitchSponsor) {
+        this.pitchSponsor = pitchSponsor;
     }
 }

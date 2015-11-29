@@ -5,12 +5,12 @@ import android.app.Activity;
 
 import android.app.Fragment;
 
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
-public class PitchScrollActivity extends Activity {
+import com.google.android.youtube.player.YouTubeBaseActivity;
+
+public class PitchScrollActivity extends YouTubeBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class PitchScrollActivity extends Activity {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             fragmentManager.beginTransaction();
             Fragment newPitch = Pitch.newInstance("My Pitch_" + String.valueOf(i), "Pitch Blurb_" + String.valueOf(i));
             fragmentTransaction.add(R.id.scrollViewLayout, newPitch, "New_Pitch_" + String.valueOf(i));

@@ -5,7 +5,6 @@
     android:orientation="vertical"
     tools:context=".Pitch">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,13 +14,33 @@
         android:id="@+id/textView"
         style="@style/txt_company"
         />
-
-    <VideoView
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/pitch_video_height"
-        android:id="@+id/videoView"
-        android:layout_gravity="center_horizontal"
+        android:id="@+id/youtubeplayer"
         />
+
+    <!--<WebView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:id="@+id/WebView">-->
+    <!--</WebView>-->
+
+    <!--<VideoView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/pitch_video_height"-->
+        <!--android:id="@+id/videoView"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--/>-->
+
+    <!--<fragment-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:name="com.google.android.youtube.player.YouTubePlayerFragment"-->
+        <!--android:id="@+id/youtubeplayer"-->
+        <!--android:layout_gravity="center_horizontal" />-->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

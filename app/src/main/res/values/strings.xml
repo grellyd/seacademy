@@ -9,4 +9,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="pitch_button">Apply!</string>
     <string name="seacademy">SOCIAL\nENTERPRISE\nACADEMY</string>
+    <string name="example_vid_source">20i1zov0cj4</string>
+    <string name="youtube_api_key">AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI</string>
 </resources>

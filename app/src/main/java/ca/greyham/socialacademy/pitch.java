@@ -1,12 +1,25 @@
 package ca.greyham.socialacademy;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
+import android.media.session.MediaController;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.VideoView;
+
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
 
 /**
@@ -17,13 +30,17 @@ import android.view.ViewGroup;
  * Use the {@link Pitch#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Pitch extends Fragment {
+public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String PITCH_NAME = "param1";
     private static final String PITCH_BLURB = "param2";
 
     private String mPitchName;
     private String mPitchBlurb;
+    private YouTubePlayer ytPlayer;
+
+    private String vidID = "20i1zov0cj4";
+    private String DEVELOPER_KEY = "AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI";
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,13 +76,111 @@ public class Pitch extends Fragment {
             mPitchName = getArguments().getString(PITCH_NAME);
             mPitchBlurb = getArguments().getString(PITCH_BLURB);
         }
+//        YouTubePlayerFragment youTubePlayerFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById (R.id.youtubeplayer);
+//
+//        youTubePlayerFragment.initialize("AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI", new YouTubePlayer.OnInitializedListener() {
+//
+//            @Override
+//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
+//
+//                if (!wasRestored) {
+//                    ytPlayer = player;
+//                    ytPlayer.setFullscreen(false);
+//                    ytPlayer.loadVideo(vidID);
+//                    ytPlayer.play();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//        });
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pitch, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_pitch, container, false);
+        YouTubePlayerView youTubeView = (YouTubePlayerView)
+                view.findViewById(R.id.youtubeplayer);
+        youTubeView.initialize(DEVELOPER_KEY, this);
+
+//        YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
+//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//        transaction.add(R.id.youtubeplayer, youTubePlayerFragment).commit();
+//
+//        youTubePlayerFragment.initialize("AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI", new YouTubePlayer.OnInitializedListener() {
+//
+//            @Override
+//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
+//
+//                if (!wasRestored) {
+//                    ytPlayer = player;
+//                    ytPlayer.setFullscreen(false);
+//                    ytPlayer.loadVideo(vidID);
+//                    ytPlayer.play();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//        });
+
+//        View rootView = inflater.inflate(R.layout.fragment_pitch, container, false);
+//
+//        YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
+//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//        transaction.add(R.id.youtubeplayer, youTubePlayerFragment).commit();
+//
+//        youTubePlayerFragment.initialize(DEVELOPER_KEY, new YouTubePlayer.OnInitializedListener() {
+//
+//            @Override
+//            public void onInitializationSuccess(YouTubePlayer.Provider arg0, YouTubePlayer youTubePlayer, boolean b) {
+//                if (!b) {
+//                    ytPlayer = youTubePlayer;
+//                    ytPlayer.setFullscreen(true);
+//                    ytPlayer.loadVideo("2zNSgSzhBfM");
+//                    ytPlayer.play();
+//                }
+//            }
+//
+//            @Override
+//            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
+//                // TODO Auto-generated method stub
+//
+//            }
+//        });
+
+        return view;
+    }
+
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
+
+        if (!wasRestored) {
+            ytPlayer = player;
+            ytPlayer.setFullscreen(false);
+            ytPlayer.loadVideo(vidID);
+            ytPlayer.play();
+        }
+
+    }
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
+        // TODO Auto-generated method stub
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

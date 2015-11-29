@@ -12,7 +12,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Pitch Company - Pitch Name"
         android:textAlignment="center"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        style="@style/txt_company"
+        />
 
     <VideoView
         android:layout_width="match_parent"
@@ -31,5 +33,12 @@
         android:text="@string/pitch_button"
         style="@style/bt_apply"
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="20dp"
+        />
+
 
 </LinearLayout>

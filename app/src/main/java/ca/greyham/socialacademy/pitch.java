@@ -1,11 +1,13 @@
 package ca.greyham.socialacademy;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -51,11 +53,12 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param pitchCompany The name of the Pitch fragment.
+     * @param pitchCompany The name of the Pitch company.
      * @param pitchBlurb The blurb of the Pitch.
      * @param pitchCampaignName
      *@param videoURL
-     * @param sponsor @return A new instance of fragment Pitch.
+     * @param pitchSponsor
+     * @return A new instance of fragment Pitch.
      */
 
     //TODO: set video source
@@ -104,6 +107,16 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         TextView sponsor = (TextView) view.findViewById(R.id.pitchSponsor);
         sponsor.setText(mPitchSponsor);
 
+        Button applyButton = (Button) view.findViewById(R.id.buttonApply);
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onFragmentInteraction(v);
+                }
+            }
+        });
+
         YouTubePlayerView youTubeView = (YouTubePlayerView)
                 view.findViewById(R.id.youtubeplayer);
         youTubeView.initialize(DEVELOPER_KEY, this);
@@ -116,7 +129,7 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         if (!wasRestored) {
             ytPlayer = player;
             ytPlayer.setFullscreen(false);
-            ytPlayer.cueVideo(mVideoURL);
+
         }
     }
 
@@ -125,23 +138,21 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         // TODO Auto-generated method stub
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void buttonApply_Click(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void videoPitch_Click(View v)
+    {
+        ytPlayer.cueVideo(mVideoURL);
     }
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
 
     @Override
     public void onDetach() {
@@ -161,6 +172,6 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(View v);
     }
 }

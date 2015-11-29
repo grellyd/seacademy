@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/youtubeplayer"
+        android:onClick="videoPitch_Click"
         />
 
     <TextView

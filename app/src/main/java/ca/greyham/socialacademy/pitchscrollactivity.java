@@ -1,17 +1,23 @@
 package ca.greyham.socialacademy;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.provider.MediaStore;
+import android.view.View;
+
 import com.google.android.youtube.player.YouTubeBaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PitchScrollActivity extends YouTubeBaseActivity {
+public class PitchScrollActivity extends YouTubeBaseActivity implements Pitch.OnFragmentInteractionListener {
 
     private final String vidID = "20i1zov0cj4";
+    static final int REQUEST_VIDEO_CAPTURE = 1;
     private List<PitchDetails> pitchDetailsList = new ArrayList<PitchDetails>();
 
     @Override
@@ -27,20 +33,27 @@ public class PitchScrollActivity extends YouTubeBaseActivity {
         for (PitchDetails pd : pitchDetailsList) {
             fragmentManager.beginTransaction();
             Fragment newPitch = Pitch.newInstance(pd.getPitchCompany(), pd.getPitchBlurb(), pd.getPitchCampaignName(), pd.getPitchSponsor(), pd.getVideoURL());
-            fragmentTransaction.add(R.id.scrollViewLayout, newPitch, pd.getId());
+            fragmentTransaction.add(R.id.scrollViewLayout, newPitch, pd.getFragmentTag());
         }
         fragmentTransaction.commit();
     }
 
-    public void OnFragmentInteractionListener()
+    public void onFragmentInteraction(View v)
     {
-        // do nothing
+        dispatchTakeVideoIntent();
+    }
+
+    private void dispatchTakeVideoIntent() {
+        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
+        }
     }
 
     private void CreateDemoData(List<PitchDetails> containingList) {
         for (int i = 0; i < 5; i++) {
             PitchDetails pitchDetails = new PitchDetails();
-            pitchDetails.setId("PITCH_ID_" + Integer.toString(i));
+            pitchDetails.setFragmentTag("PITCH_FRAGMENT_TAG_" + Integer.toString(i));
             pitchDetails.setPitchCompany("PITCH COMPANY " + Integer.toString(i));
             pitchDetails.setPitchCampaignName("PITCH CAMPAIGN " + Integer.toString(i));
             pitchDetails.setPitchBlurb("PITCH BLURB " + Integer.toString(i));

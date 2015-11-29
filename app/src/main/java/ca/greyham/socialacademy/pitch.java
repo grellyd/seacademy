@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -42,18 +43,20 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param pitchName The name of the Pitch fragment.
+     * @param pitchCompany The name of the Pitch fragment.
      * @param pitchBlurb The blurb of the Pitch.
-     * @return A new instance of fragment Pitch.
+     * @param pitchCampaignName
+     *@param videoURL
+     * @param sponsor @return A new instance of fragment Pitch.
      */
 
     //TODO: set video source
     //TODO: Set video blurb
 
-    public static Pitch newInstance(String pitchName, String pitchBlurb) {
+    public static Pitch newInstance(String pitchCompany, String pitchBlurb, String pitchCampaignName, String videoURL, String sponsor) {
         Pitch fragment = new Pitch();
         Bundle args = new Bundle();
-        args.putString(PITCH_NAME, pitchName);
+        args.putString(PITCH_NAME, pitchCompany);
         args.putString(PITCH_BLURB, pitchBlurb);
         fragment.setArguments(args);
         return fragment;
@@ -74,6 +77,11 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_pitch, container, false);
+
+        TextView companyNameTV = (TextView) view.findViewById(R.id.PitchCompanyNameTextView);
+
+        companyNameTV.setText(mPitchName);
+
         YouTubePlayerView youTubeView = (YouTubePlayerView)
                 view.findViewById(R.id.youtubeplayer);
         youTubeView.initialize(DEVELOPER_KEY, this);

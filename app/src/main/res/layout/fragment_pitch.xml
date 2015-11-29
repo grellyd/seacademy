@@ -11,7 +11,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Pitch Company - Pitch Name"
         android:textAlignment="center"
-        android:id="@+id/textView"
+        android:id="@+id/PitchCompanyNameTextView"
         style="@style/txt_company"
         />
     <com.google.android.youtube.player.YouTubePlayerView
@@ -19,27 +19,6 @@
         android:layout_width="match_parent"
         android:id="@+id/youtubeplayer"
         />
-
-    <!--<WebView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:id="@+id/WebView">-->
-    <!--</WebView>-->
-
-    <!--<VideoView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/pitch_video_height"-->
-        <!--android:id="@+id/videoView"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--/>-->
-
-    <!--<fragment-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:name="com.google.android.youtube.player.YouTubePlayerFragment"-->
-        <!--android:id="@+id/youtubeplayer"-->
-        <!--android:layout_gravity="center_horizontal" />-->
 
     <TextView
         android:layout_width="match_parent"

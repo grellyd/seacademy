@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.greyham.socialacademy.pitchactivity">
+    tools:context="ca.greyham.socialacademy.pitchscrollactivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,12 +17,25 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/scrollViewLayout">
+        </LinearLayout>
 
-        <fragment
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:name="ca.greyham.socialacademy.pitch"
-            android:id="@+id/fragment"
-            tools:layout="@layout/fragment_pitch" />
+        <!--<fragment-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:name="ca.greyham.socialacademy.Pitch"-->
+            <!--android:id="@+id/fragment"-->
+            <!--tools:layout="@layout/fragment_pitch" />-->
+        <!--<fragment-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:name="ca.greyham.socialacademy.Pitch"-->
+            <!--android:id="@+id/fragment1"-->
+            <!--tools:layout="@layout/fragment_pitch" />-->
     </ScrollView>
+
 </RelativeLayout>

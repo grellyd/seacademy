@@ -11,13 +11,14 @@
     tools:context="ca.greyham.socialacademy.MainActivity">
 
     <Button
-        android:id="@+id/button_find_project"
+        android:id="@+id/buttonFindProject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Find a project!"/>
+        android:text="Find a project!"
+        android:onClick="buttonFindProject_Click"/>
 
     <Button
-        android:id="@+id/button_profile"
+        android:id="@+id/buttonProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Profile"/>

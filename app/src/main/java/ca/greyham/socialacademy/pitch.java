@@ -3,7 +3,7 @@ package ca.greyham.socialacademy;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link pitch.OnFragmentInteractionListener} interface
+ * {@link Pitch.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link pitch#newInstance} factory method to
+ * Use the {@link Pitch#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class pitch extends Fragment {
+public class Pitch extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String PITCH_NAME = "param1";
     private static final String PITCH_BLURB = "param2";
@@ -27,7 +27,7 @@ public class pitch extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public pitch() {
+    public Pitch() {
         // Required empty public constructor
     }
 
@@ -35,16 +35,16 @@ public class pitch extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param pitchName The name of the pitch fragment.
-     * @param pitchBlurb The blurb of the pitch.
-     * @return A new instance of fragment pitch.
+     * @param pitchName The name of the Pitch fragment.
+     * @param pitchBlurb The blurb of the Pitch.
+     * @return A new instance of fragment Pitch.
      */
 
     //TODO: set video source
     //TODO: Set video blurb
 
-    public static pitch newInstance(String pitchName, String pitchBlurb) {
-        pitch fragment = new pitch();
+    public static Pitch newInstance(String pitchName, String pitchBlurb) {
+        Pitch fragment = new Pitch();
         Bundle args = new Bundle();
         args.putString(PITCH_NAME, pitchName);
         args.putString(PITCH_BLURB, pitchBlurb);
@@ -74,17 +74,17 @@ public class pitch extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+//
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
 
     @Override
     public void onDetach() {

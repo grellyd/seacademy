@@ -5,4 +5,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="pitch_fragment_placeholder_text">Hello! This is my pitch</string>
     <string name="title_activity_pitchactivity">pitchactivity</string>
+    <string name="title_activity_pitchscrollactivity">pitchscrollactivity</string>
 </resources>

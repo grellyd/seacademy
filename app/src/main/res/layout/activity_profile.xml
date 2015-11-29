@@ -32,8 +32,6 @@
                 android:name="ca.greyham.socialacademy.ProfileFragment"
                 tools:layout="@layout/fragment_profile" />
 
-
-
         </LinearLayout>
 
     </ScrollView>

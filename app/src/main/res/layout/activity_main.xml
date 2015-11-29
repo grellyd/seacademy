@@ -24,7 +24,9 @@
         android:onClick="buttonFindProject_Click"
         android:layout_weight="14"
         android:layout_height="0dp"
+        android:textAllCaps="false"
         android:text="Find a\n project!"
+
         style="@style/find_proj"
         />
 
@@ -33,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_weight="8"
         android:layout_height="0dp"
+        android:textAllCaps="false"
         android:text="See your\nProfile"
         style="@style/profile" />
 </LinearLayout>

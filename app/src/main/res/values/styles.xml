@@ -18,29 +18,30 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="land_button">
         <item name="android:radius">60dp</item>
-        <item name="android:textSize">25dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textColor">#e6e6e6</item>
-        <item name="android:layout_marginLeft">35dp</item>
-        <item name="android:layout_marginRight">35dp</item>
-    <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginLeft">55dp</item>
+        <item name="android:layout_marginRight">55dp</item>
+        <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">25dp</item>
         <item name="android:textStyle">bold</item>
     </style>
     <style name="find_proj" parent="land_button">
         <item name="android:background">#00538C</item>
-        <item name="android:layout_marginBottom">35dp</item>
+        <item name="android:layout_marginBottom">55dp</item>
+        <item name="android:layout_marginTop">55dp</item>
     </style>
     <style name="profile" parent="land_button">
-        <item name="android:background">#0081D8</item>
+        <item name="android:background">#768993</item>
     </style>
     <style name="bt_apply">
         <item name="android:background">#FF9406</item>
         <item name="android:textSize">25dp</item>
         <item name="android:layout_height">70dp</item>
-        <item name="android:layout_marginTop">30dp</item>
-        <item name="android:layout_marginBottom">40dp</item>
-        <item name="android:layout_marginLeft">70dp</item>
-        <item name="android:layout_marginRight">70dp</item>
+        <item name="android:layout_marginTop">35dp</item>
+        <item name="android:layout_marginBottom">45dp</item>
+        <item name="android:layout_marginLeft">80dp</item>
+        <item name="android:layout_marginRight">80dp</item>
         <item name="android:textColor">#ffffff</item>
 
     </style>
@@ -63,7 +64,7 @@
     <style name="txt_company" parent="txt_pitch">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">30dp</item>
-        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textAlignment">textStart</item>
     </style>
     <style name="img_profile">
         <item name="android:paddingTop">30dp</item>

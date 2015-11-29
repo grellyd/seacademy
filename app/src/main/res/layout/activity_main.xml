@@ -10,18 +10,19 @@
     android:orientation="vertical"
     tools:context="ca.greyham.socialacademy.MainActivity"
     style="@style/bg_collor">
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"
-        android:text="@string/seacademy"
-        style="@style/txt_company"
+        android:layout_height="120dp"
+        android:id="@+id/imageView"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/logo"
+        style="img_profile"
         />
     <Button
         android:id="@+id/buttonFindProject"
         android:layout_width="match_parent"
         android:onClick="buttonFindProject_Click"
-        android:layout_weight="8"
+        android:layout_weight="14"
         android:layout_height="0dp"
         android:text="Find a\n project!"
         style="@style/find_proj"

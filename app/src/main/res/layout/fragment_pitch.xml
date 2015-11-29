@@ -12,7 +12,7 @@
         android:text="Pitch Company"
         android:textAlignment="center"
         android:id="@+id/PitchCompanyNameTextView"
-        style="@style/txt_company"
+        style="@style/txt_company_profile"
         />
 
     <TextView
@@ -64,12 +64,14 @@
         android:id="@+id/buttonApply"
         android:onClick="buttonApply_Click"
         />
+    <!--style for contact bt_contact -->
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@android:color/darker_gray"
         android:layout_marginBottom="20dp"
         />
+
 
 
 </LinearLayout>

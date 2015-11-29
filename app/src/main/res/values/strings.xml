@@ -8,7 +8,13 @@
     <string name="title_activity_pitchscrollactivity">pitchscrollactivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="pitch_button">Apply!</string>
-    <string name="seacademy">SOCIAL\nENTERPRISE\nACADEMY</string>
-    <string name="example_vid_source">20i1zov0cj4</string>
-    <string name="youtube_api_key">AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI</string>
+    <string name="seacademy">Social Enterprise Academy</string>
+    <string name="name">John Mark Hobbes Allanidshuh</string>
+    <string name="bio">Bio</string>
+    <string name="txt_bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin, mauris eu mollis condimentum, diam purus tempus ligula, nec fringilla orci turpis et ex. </string>
+    <string name="bt_contact">Contact</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prev_proj">Previous Projects</string>
+>>>>>>> c76c56aba5cc104814da4c100ff3578e4b31650a
 </resources>

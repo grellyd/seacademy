@@ -33,5 +33,6 @@
         android:layout_weight="8"
         android:layout_height="0dp"
         android:text="See your\nProfile"
+        android:onClick="buttonProfile_Click"
         style="@style/profile" />
 </LinearLayout>

@@ -1,12 +1,9 @@
 package ca.greyham.socialacademy;
 
 import android.os.Bundle;
-
 import android.app.Fragment;
-
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-
 import com.google.android.youtube.player.YouTubeBaseActivity;
 
 import java.util.ArrayList;
@@ -52,5 +49,4 @@ public class PitchScrollActivity extends YouTubeBaseActivity {
             containingList.add(pitchDetails);
         }
     }
-
 }

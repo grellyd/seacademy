@@ -30,6 +30,7 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     private static final String PITCH_CAMPAIGN = "param3";
     private static final String PITCH_SPONSOR = "param5";
     private static final String VIDEO_URL = "param4";
+    private static final String DEVELOPER_KEY = "AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI";
 
     private String mPitchCompany;
     private String mPitchBlurb;
@@ -39,9 +40,6 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
 
     private YouTubePlayer ytPlayer;
 
-
-    private String vidID = "20i1zov0cj4";
-    private String DEVELOPER_KEY = "AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI";
 
     private OnFragmentInteractionListener mListener;
 
@@ -118,7 +116,7 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         if (!wasRestored) {
             ytPlayer = player;
             ytPlayer.setFullscreen(false);
-            ytPlayer.cueVideo(vidID);
+            ytPlayer.cueVideo(mVideoURL);
         }
     }
 

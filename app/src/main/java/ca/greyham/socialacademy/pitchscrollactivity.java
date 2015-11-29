@@ -10,7 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
-public class pitchscrollactivity extends Activity {
+public class Pitchscrollactivity extends Activity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide

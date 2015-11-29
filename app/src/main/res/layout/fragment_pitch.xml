@@ -14,12 +14,12 @@
         android:textAlignment="center"
         android:id="@+id/textView" />
 
-
     <VideoView
         android:layout_width="match_parent"
         android:layout_height="@dimen/pitch_video_height"
         android:id="@+id/videoView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

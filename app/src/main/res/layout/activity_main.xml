@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="ca.greyham.socialacademy.MainActivity">
+    tools:context="ca.greyham.socialacademy.MainActivity"
+    style="@style/bg_collor">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

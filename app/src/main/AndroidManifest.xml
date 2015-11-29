@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".PitchScrollActivity"
-            android:label="@string/title_activity_pitchscrollactivity"></activity>
+            android:label="@string/title_activity_pitchscrollactivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

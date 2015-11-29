@@ -1,13 +1,17 @@
 package ca.greyham.socialacademy;
 
 import android.content.Context;
+import android.drm.DrmManagerClient;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
@@ -94,7 +98,7 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_pitch, container, false);
+        final View view = inflater.inflate(R.layout.fragment_pitch, container, false);
 
         TextView companyNameTV = (TextView) view.findViewById(R.id.PitchCompanyNameTextView);
         companyNameTV.setText(mPitchCompany);
@@ -106,22 +110,29 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         companyBlurb.setText(mPitchBlurb);
 
         TextView sponsor = (TextView) view.findViewById(R.id.pitchSponsor);
-        sponsor.setText(mPitchSponsor);
+        sponsor.setText("Sponsored by: " + mPitchSponsor);
 
         Button applyButton = (Button) view.findViewById(R.id.buttonApply);
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e ("Apply_On_Click", "On click event fired");
                 if (mListener != null) {
                     mListener.onFragmentInteraction(v);
+                } else {
+                    Log.e ("Apply_On_Click", "mListener is null");
                 }
             }
         });
 
-        youTubeView = (YouTubePlayerView)
-
-                view.findViewById(R.id.youtubeplayer);
+        youTubeView = (YouTubePlayerView) view.findViewById(R.id.youtubeplayer);
         youTubeView.setVisibility(View.INVISIBLE);
+        youTubeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initVideo();
+            }
+        });
 
         TextView clickToPlay = (TextView) view.findViewById(R.id.clickToPlay);
         clickToPlay.setOnClickListener(new View.OnClickListener() {
@@ -143,8 +154,66 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
             ytPlayer = player;
+            ytPlayer.setPlayerStateChangeListener(new YouTubePlayer.PlayerStateChangeListener() {
+                @Override
+                public void onLoading() {
+
+                }
+
+                @Override
+                public void onLoaded(String s) {
+
+                }
+
+                @Override
+                public void onAdStarted() {
+
+                }
+
+                @Override
+                public void onVideoStarted() {
+
+                }
+
+                @Override
+                public void onVideoEnded() {
+                    ytPlayer.release();
+                }
+
+                @Override
+                public void onError(YouTubePlayer.ErrorReason errorReason) {
+                    ytPlayer.release();
+                }
+            });
+            ytPlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
+                @Override
+                public void onPlaying() {
+
+                }
+
+                @Override
+                public void onPaused() {
+
+                }
+
+                @Override
+                public void onStopped() {
+                    ytPlayer.release();
+                }
+
+                @Override
+                public void onBuffering(boolean b) {
+
+                }
+
+                @Override
+                public void onSeekTo(int i) {
+
+                }
+            });
             ytPlayer.setFullscreen(false);
-            ytPlayer.cueVideo(mVideoURL);
+            ytPlayer.loadVideo(mVideoURL);
+            ytPlayer.play();
         }
     }
 
@@ -156,6 +225,7 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.e("On_Attach", "On attach fired");
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {

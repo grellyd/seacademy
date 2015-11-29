@@ -7,7 +7,9 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 
@@ -17,7 +19,6 @@ import java.util.List;
 public class PitchScrollActivity extends YouTubeBaseActivity implements Pitch.OnFragmentInteractionListener {
 
     private final String vidID = "20i1zov0cj4";
-    static final int REQUEST_VIDEO_CAPTURE = 1;
     private List<PitchDetails> pitchDetailsList = new ArrayList<PitchDetails>();
 
     @Override
@@ -40,18 +41,41 @@ public class PitchScrollActivity extends YouTubeBaseActivity implements Pitch.On
 
     public void onFragmentInteraction(View v)
     {
-        dispatchTakeVideoIntent();
-    }
-
-    private void dispatchTakeVideoIntent() {
-        Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takeVideoIntent, REQUEST_VIDEO_CAPTURE);
-        }
+        PopupWindow popUp = new PopupWindow(v);
+        popUp.showAtLocation(v, Gravity.BOTTOM, 10, 10);
+        Intent videoRecordActivity = new Intent(PitchScrollActivity.this, VideoRecordActivity.class);
+        startActivity(videoRecordActivity);
     }
 
     private void CreateDemoData(List<PitchDetails> containingList) {
-        for (int i = 0; i < 5; i++) {
+        PitchDetails pitchDetails0 = new PitchDetails();
+        pitchDetails0.setFragmentTag("Diabetes_BC");
+        pitchDetails0.setPitchCompany("Diabetes British Columbia");
+        pitchDetails0.setPitchCampaignName("Spring into Action");
+        pitchDetails0.setPitchBlurb("PITCH_BLURB_DBC");
+        pitchDetails0.setPitchSponsor("Nestle Candy Company");
+        pitchDetails0.setVideoURL(vidID);
+        containingList.add(pitchDetails0);
+
+        PitchDetails pitchDetails1 = new PitchDetails();
+        pitchDetails1.setFragmentTag("Diabetes_BC_TAG");
+        pitchDetails1.setPitchCompany("Diabetes British Columbia");
+        pitchDetails1.setPitchCampaignName("Spring into Action");
+        pitchDetails1.setPitchBlurb("PITCH_BLURB_DBC");
+        pitchDetails1.setPitchSponsor("Nestle Candy Company");
+        pitchDetails1.setVideoURL("2udeiQ3-rJk");
+        containingList.add(pitchDetails1);
+
+        PitchDetails pitchDetails2 = new PitchDetails();
+        pitchDetails2.setFragmentTag("CFB_TAG");
+        pitchDetails2.setPitchCompany("The Canadian Federation of the Bline");
+        pitchDetails2.setPitchCampaignName("Nov 3rd - National Awareness Day");
+        pitchDetails2.setPitchBlurb("PITCH_BLURB_CFB");
+        pitchDetails2.setPitchSponsor("Telus");
+        pitchDetails2.setVideoURL("XEk6grcrdWE");
+        containingList.add(pitchDetails2);
+
+        for (int i = 0; i < 2; i++) {
             PitchDetails pitchDetails = new PitchDetails();
             pitchDetails.setFragmentTag("PITCH_FRAGMENT_TAG_" + Integer.toString(i));
             pitchDetails.setPitchCompany("PITCH COMPANY " + Integer.toString(i));

@@ -75,7 +75,7 @@
         style="@style/bt_apply"
         android:id="@+id/buttonApply"
         android:onClick="buttonApply_Click"
-        android:layout_height="wrap_content" />
+        />
     <!--style for contact bt_contact -->
     <View
         android:layout_width="match_parent"

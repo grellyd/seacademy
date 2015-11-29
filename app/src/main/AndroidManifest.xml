@@ -3,16 +3,22 @@
     package="ca.greyham.socialacademy">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="true">
-        <!--android:debuggable="true"-->
+        android:theme="@style/AppTheme">
+
+        <!-- android:debuggable="true" -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -26,7 +32,15 @@
         <activity
             android:name=".PitchScrollActivity"
             android:label="@string/title_activity_pitchscrollactivity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".VideoRecordActivity"
+            android:label="@string/title_activity_video_record"
+            android:parentActivityName=".PitchScrollActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.greyham.socialacademy.PitchScrollActivity" />
+        </activity>
     </application>
 
 </manifest>

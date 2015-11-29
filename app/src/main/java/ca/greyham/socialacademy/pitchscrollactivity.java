@@ -19,7 +19,7 @@ public class PitchScrollActivity extends YouTubeBaseActivity {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <2; i++) {
             fragmentManager.beginTransaction();
             Fragment newPitch = Pitch.newInstance("My Pitch_" + String.valueOf(i), "Pitch Blurb_" + String.valueOf(i));
             fragmentTransaction.add(R.id.scrollViewLayout, newPitch, "New_Pitch_" + String.valueOf(i));

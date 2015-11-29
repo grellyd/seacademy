@@ -17,7 +17,7 @@ public class VideoRecordActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_record);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //create new Intent
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
@@ -49,13 +49,16 @@ public class VideoRecordActivity extends Activity {
         if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // Video captured and saved to fileUri specified in the Intent
-                Toast.makeText(this, "Video saved to:\n" +
-                        data.getData(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "Video saved to:\n" +
+//                        data.getData(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Video Submitted!", Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the video capture
             } else {
                 // Video capture failed, advise user
             }
+            Intent returnToPitchScrollIntent = new Intent(VideoRecordActivity.this, PitchScrollActivity.class);
+            startActivity(returnToPitchScrollIntent);
         }
     }
 

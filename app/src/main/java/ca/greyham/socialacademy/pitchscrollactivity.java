@@ -41,8 +41,6 @@ public class PitchScrollActivity extends YouTubeBaseActivity implements Pitch.On
 
     public void onFragmentInteraction(View v)
     {
-        PopupWindow popUp = new PopupWindow(v);
-        popUp.showAtLocation(v, Gravity.BOTTOM, 10, 10);
         Intent videoRecordActivity = new Intent(PitchScrollActivity.this, VideoRecordActivity.class);
         startActivity(videoRecordActivity);
     }
@@ -68,7 +66,7 @@ public class PitchScrollActivity extends YouTubeBaseActivity implements Pitch.On
 
         PitchDetails pitchDetails2 = new PitchDetails();
         pitchDetails2.setFragmentTag("CFB_TAG");
-        pitchDetails2.setPitchCompany("The Canadian Federation of the Bline");
+        pitchDetails2.setPitchCompany("The Canadian Federation of the Blind");
         pitchDetails2.setPitchCampaignName("Nov 3rd - National Awareness Day");
         pitchDetails2.setPitchBlurb("PITCH_BLURB_CFB");
         pitchDetails2.setPitchSponsor("Telus");

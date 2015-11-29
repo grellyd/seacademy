@@ -100,6 +100,15 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
 
         final View view = inflater.inflate(R.layout.fragment_pitch, container, false);
 
+        Context context = this.getActivity();
+
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+
         TextView companyNameTV = (TextView) view.findViewById(R.id.PitchCompanyNameTextView);
         companyNameTV.setText(mPitchCompany);
 
@@ -149,6 +158,11 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         youTubeView.setVisibility(View.VISIBLE);
         youTubeView.initialize(DEVELOPER_KEY, this);
     }
+    private void closeAndHideVideo()
+    {
+        ytPlayer.release();
+        youTubeView.setVisibility(View.INVISIBLE);
+    }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
@@ -177,12 +191,14 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
 
                 @Override
                 public void onVideoEnded() {
-                    ytPlayer.release();
+                    Log.e("PitchVid", "OnEnded");
+                    closeAndHideVideo();
                 }
 
                 @Override
                 public void onError(YouTubePlayer.ErrorReason errorReason) {
-                    ytPlayer.release();
+                    Log.e("PitchVid", "OnError: " + errorReason.toString());
+                    closeAndHideVideo();
                 }
             });
             ytPlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
@@ -198,7 +214,8 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
 
                 @Override
                 public void onStopped() {
-                    ytPlayer.release();
+//                    Log.e("PitchVid", "OnStopped");
+//                    closeAndHideVideo();
                 }
 
                 @Override

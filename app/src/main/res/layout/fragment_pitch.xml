@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/pitch_fragment_placeholder_text"
+        android:id="@+id/pitchBlurb"
         style="@style/txt_hello"
         />
     <Button

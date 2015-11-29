@@ -23,12 +23,20 @@ import com.google.android.youtube.player.YouTubePlayerView;
  */
 public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String PITCH_NAME = "param1";
+    private static final String PITCH_COMPANY = "param1";
     private static final String PITCH_BLURB = "param2";
+    private static final String PITCH_CAMPAIGN = "param3";
+    private static final String PITCH_SPONSOR = "param5";
+    private static final String VIDEO_URL = "param4";
 
-    private String mPitchName;
+    private String mPitchCompany;
     private String mPitchBlurb;
+    private String mPitchCampaignName;
+    private String mPitchSponsor;
+    private String mVideoURL;
+
     private YouTubePlayer ytPlayer;
+
 
     private String vidID = "20i1zov0cj4";
     private String DEVELOPER_KEY = "AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI";
@@ -53,11 +61,14 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     //TODO: set video source
     //TODO: Set video blurb
 
-    public static Pitch newInstance(String pitchCompany, String pitchBlurb, String pitchCampaignName, String videoURL, String sponsor) {
+    public static Pitch newInstance(String pitchCompany, String pitchBlurb, String pitchCampaignName, String pitchSponsor, String videoURL) {
         Pitch fragment = new Pitch();
         Bundle args = new Bundle();
-        args.putString(PITCH_NAME, pitchCompany);
+        args.putString(PITCH_COMPANY, pitchCompany);
         args.putString(PITCH_BLURB, pitchBlurb);
+        args.putString(PITCH_CAMPAIGN, pitchCampaignName);
+        args.putString(PITCH_SPONSOR, pitchSponsor);
+        args.putString(VIDEO_URL, videoURL);
         fragment.setArguments(args);
         return fragment;
     }
@@ -66,8 +77,11 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPitchName = getArguments().getString(PITCH_NAME);
+            mPitchCompany = getArguments().getString(PITCH_COMPANY);
             mPitchBlurb = getArguments().getString(PITCH_BLURB);
+            mPitchCampaignName = getArguments().getString(PITCH_CAMPAIGN);
+            mPitchSponsor = getArguments().getString(PITCH_SPONSOR);
+            mVideoURL = getArguments().getString(VIDEO_URL);
         }
     }
 
@@ -79,8 +93,10 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         View view = inflater.inflate(R.layout.fragment_pitch, container, false);
 
         TextView companyNameTV = (TextView) view.findViewById(R.id.PitchCompanyNameTextView);
+        companyNameTV.setText(mPitchCompany + " - " + mPitchCampaignName);
 
-        companyNameTV.setText(mPitchName);
+        TextView companyBlurb = (TextView) view.findViewById(R.id.pitchBlurb);
+        companyBlurb.setText(mPitchBlurb);
 
         YouTubePlayerView youTubeView = (YouTubePlayerView)
                 view.findViewById(R.id.youtubeplayer);

@@ -44,6 +44,13 @@
         android:id="@+id/youtubeplayer"
         android:onClick="videoPitch_Click"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Small"
+        android:layout_alignParentTop="true"
+        android:text="Click to Play Video"
+        android:id="@+id/clickToPlay"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -51,7 +58,6 @@
         android:text="@string/sponsor"
         android:id="@+id/pitchSponsor"
         style="@style/txt_sponsor"
-
         />
 
     <TextView
@@ -68,7 +74,7 @@
         style="@style/bt_apply"
         android:id="@+id/buttonApply"
         android:onClick="buttonApply_Click"
-        />
+        android:layout_height="wrap_content" />
     <!--style for contact bt_contact -->
     <View
         android:layout_width="match_parent"

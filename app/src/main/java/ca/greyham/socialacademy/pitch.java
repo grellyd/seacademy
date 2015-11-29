@@ -41,6 +41,7 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     private String mVideoURL;
 
     private YouTubePlayer ytPlayer;
+    private YouTubePlayerView youTubeView;
 
 
     private OnFragmentInteractionListener mListener;
@@ -117,30 +118,39 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
             }
         });
 
-        YouTubePlayerView youTubeView = (YouTubePlayerView)
+        youTubeView = (YouTubePlayerView)
+
                 view.findViewById(R.id.youtubeplayer);
-        youTubeView.initialize(DEVELOPER_KEY, this);
+        youTubeView.setVisibility(View.INVISIBLE);
+
+        TextView clickToPlay = (TextView) view.findViewById(R.id.clickToPlay);
+        clickToPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initVideo();
+            }
+        });
         return view;
     }
 
+    private void initVideo()
+    {
+        youTubeView.setVisibility(View.VISIBLE);
+        youTubeView.initialize(DEVELOPER_KEY, this);
+    }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
             ytPlayer = player;
             ytPlayer.setFullscreen(false);
-
+            ytPlayer.cueVideo(mVideoURL);
         }
     }
 
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
         // TODO Auto-generated method stub
-    }
-
-    public void videoPitch_Click(View v)
-    {
-        ytPlayer.cueVideo(mVideoURL);
     }
 
     @Override

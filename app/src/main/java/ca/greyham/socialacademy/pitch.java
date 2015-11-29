@@ -13,6 +13,8 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import org.w3c.dom.Text;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -93,10 +95,16 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         View view = inflater.inflate(R.layout.fragment_pitch, container, false);
 
         TextView companyNameTV = (TextView) view.findViewById(R.id.PitchCompanyNameTextView);
-        companyNameTV.setText(mPitchCompany + " - " + mPitchCampaignName);
+        companyNameTV.setText(mPitchCompany);
+
+        TextView campaignName = (TextView) view.findViewById(R.id.PitchCampaignNameTextView);
+        campaignName.setText(mPitchCampaignName);
 
         TextView companyBlurb = (TextView) view.findViewById(R.id.pitchBlurb);
         companyBlurb.setText(mPitchBlurb);
+
+        TextView sponsor = (TextView) view.findViewById(R.id.pitchSponsor);
+        sponsor.setText(mPitchSponsor);
 
         YouTubePlayerView youTubeView = (YouTubePlayerView)
                 view.findViewById(R.id.youtubeplayer);

@@ -6,14 +6,14 @@ public class PitchDetails {
     private String pitchCampaignName;
     private String videoURL;
     private String pitchSponsor;
-    private String id;
+    private String fragmentTag;
 
-    public String getId() {
-        return id;
+    public String getFragmentTag() {
+        return fragmentTag;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFragmentTag(String fragmentTag) {
+        this.fragmentTag = fragmentTag;
     }
 
     public String getPitchCompany() {

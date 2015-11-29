@@ -15,8 +15,14 @@ public class MainActivity extends Activity {
 
     public void buttonFindProject_Click(View v)
     {
-        Intent pitchscrollactivity = new Intent(MainActivity.this, PitchScrollActivity.class);
-        startActivity(pitchscrollactivity);
+        Intent pitchScrollActivity = new Intent(MainActivity.this, PitchScrollActivity.class);
+        startActivity(pitchScrollActivity);
+    }
+
+    public void buttonProfile_Click(View v)
+    {
+        Intent profileActivity = new Intent(MainActivity.this, ProfileActivity.class);
+        startActivity(profileActivity);
     }
 
 }

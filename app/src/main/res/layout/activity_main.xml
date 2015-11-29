@@ -37,5 +37,6 @@
         android:layout_height="0dp"
         android:textAllCaps="false"
         android:text="See your\nProfile"
+        android:onClick="buttonProfile_Click"
         style="@style/profile" />
 </LinearLayout>

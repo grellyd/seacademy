@@ -1,11 +1,17 @@
 package ca.greyham.socialacademy;
 
+import android.content.Context;
+import android.drm.DrmManagerClient;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
@@ -30,6 +36,7 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     private static final String PITCH_CAMPAIGN = "param3";
     private static final String PITCH_SPONSOR = "param5";
     private static final String VIDEO_URL = "param4";
+    private static final String DEVELOPER_KEY = "AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI";
 
     private String mPitchCompany;
     private String mPitchBlurb;
@@ -38,10 +45,8 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
     private String mVideoURL;
 
     private YouTubePlayer ytPlayer;
+    private YouTubePlayerView youTubeView;
 
-
-    private String vidID = "20i1zov0cj4";
-    private String DEVELOPER_KEY = "AIzaSyCWqS5ve4UI0VJT61nBCy4icrsDqQzF2tI";
 
     private OnFragmentInteractionListener mListener;
 
@@ -53,11 +58,12 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param pitchCompany The name of the Pitch fragment.
+     * @param pitchCompany The name of the Pitch company.
      * @param pitchBlurb The blurb of the Pitch.
      * @param pitchCampaignName
      *@param videoURL
-     * @param sponsor @return A new instance of fragment Pitch.
+     * @param pitchSponsor
+     * @return A new instance of fragment Pitch.
      */
 
     //TODO: set video source
@@ -92,7 +98,16 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_pitch, container, false);
+        final View view = inflater.inflate(R.layout.fragment_pitch, container, false);
+
+        Context context = this.getActivity();
+
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
 
         TextView companyNameTV = (TextView) view.findViewById(R.id.PitchCompanyNameTextView);
         companyNameTV.setText(mPitchCompany);
@@ -104,21 +119,118 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         companyBlurb.setText(mPitchBlurb);
 
         TextView sponsor = (TextView) view.findViewById(R.id.pitchSponsor);
-        sponsor.setText(mPitchSponsor);
+        sponsor.setText("Sponsored by: " + mPitchSponsor);
 
-        YouTubePlayerView youTubeView = (YouTubePlayerView)
-                view.findViewById(R.id.youtubeplayer);
-        youTubeView.initialize(DEVELOPER_KEY, this);
+        Button applyButton = (Button) view.findViewById(R.id.buttonApply);
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e ("Apply_On_Click", "On click event fired");
+                if (mListener != null) {
+                    mListener.onFragmentInteraction(v);
+                } else {
+                    Log.e ("Apply_On_Click", "mListener is null");
+                }
+            }
+        });
+
+        youTubeView = (YouTubePlayerView) view.findViewById(R.id.youtubeplayer);
+        youTubeView.setVisibility(View.INVISIBLE);
+        youTubeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initVideo();
+            }
+        });
+
+        TextView clickToPlay = (TextView) view.findViewById(R.id.clickToPlay);
+        clickToPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initVideo();
+            }
+        });
         return view;
     }
 
+    private void initVideo()
+    {
+        youTubeView.setVisibility(View.VISIBLE);
+        youTubeView.initialize(DEVELOPER_KEY, this);
+    }
+    private void closeAndHideVideo()
+    {
+        ytPlayer.release();
+        youTubeView.setVisibility(View.INVISIBLE);
+    }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
             ytPlayer = player;
+            ytPlayer.setPlayerStateChangeListener(new YouTubePlayer.PlayerStateChangeListener() {
+                @Override
+                public void onLoading() {
+
+                }
+
+                @Override
+                public void onLoaded(String s) {
+
+                }
+
+                @Override
+                public void onAdStarted() {
+
+                }
+
+                @Override
+                public void onVideoStarted() {
+
+                }
+
+                @Override
+                public void onVideoEnded() {
+                    Log.e("PitchVid", "OnEnded");
+                    closeAndHideVideo();
+                }
+
+                @Override
+                public void onError(YouTubePlayer.ErrorReason errorReason) {
+                    Log.e("PitchVid", "OnError: " + errorReason.toString());
+                    closeAndHideVideo();
+                }
+            });
+            ytPlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
+                @Override
+                public void onPlaying() {
+
+                }
+
+                @Override
+                public void onPaused() {
+
+                }
+
+                @Override
+                public void onStopped() {
+//                    Log.e("PitchVid", "OnStopped");
+//                    closeAndHideVideo();
+                }
+
+                @Override
+                public void onBuffering(boolean b) {
+
+                }
+
+                @Override
+                public void onSeekTo(int i) {
+
+                }
+            });
             ytPlayer.setFullscreen(false);
-            ytPlayer.cueVideo(vidID);
+            ytPlayer.loadVideo(mVideoURL);
+            ytPlayer.play();
         }
     }
 
@@ -127,23 +239,17 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         // TODO Auto-generated method stub
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void buttonApply_Click(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.e("On_Attach", "On attach fired");
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
         }
     }
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
 
     @Override
     public void onDetach() {
@@ -163,6 +269,6 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(View v);
     }
 }

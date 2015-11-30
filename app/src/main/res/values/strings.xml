@@ -9,14 +9,14 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="pitch_button">Pitch in!</string>
     <string name="seacademy">Social Enterprise Academy</string>
-    <string name="name">John Diaz</string>
+    <string name="name">Xi Zhang</string>
     <string name="bio">Bio</string>
-    <string name="txt_bio">I'm business student interested in using my knowledge to collaborate to non profits to grow in impact social enterprise.</string>
+    <string name="txt_bio">I am a business student interested in using my knowledge to collaborate to non profits to grow in impact social enterprise.</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin, mauris eu mollis condimentum, diam purus tempus ligula, nec fringilla orci turpis et ex. </string>
     <string name="bt_contact">Contact</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="prev_proj">Previous Projects</string>
+    <string name="prev_proj">Current Projects</string>
     <string name="sponsor">Sponsored By Coca-Cola</string>
     <string name="title_proj">Projects</string>
     <string name="title_activity_video_record">VideoRecordActivity</string>

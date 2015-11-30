@@ -101,7 +101,6 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
         final View view = inflater.inflate(R.layout.fragment_pitch, container, false);
 
         Context context = this.getActivity();
-
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
@@ -214,8 +213,8 @@ public class Pitch extends Fragment implements YouTubePlayer.OnInitializedListen
 
                 @Override
                 public void onStopped() {
-//                    Log.e("PitchVid", "OnStopped");
-//                    closeAndHideVideo();
+                    Log.e("PitchVid", "OnStopped");
+                    closeAndHideVideo();
                 }
 
                 @Override

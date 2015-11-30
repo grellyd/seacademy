@@ -50,16 +50,16 @@ public class PitchScrollActivity extends YouTubeBaseActivity implements Pitch.On
         pitchDetails0.setFragmentTag("Diabetes_BC");
         pitchDetails0.setPitchCompany("Diabetes British Columbia");
         pitchDetails0.setPitchCampaignName("Spring into Action");
-        pitchDetails0.setPitchBlurb("PITCH_BLURB_DBC");
-        pitchDetails0.setPitchSponsor("Nestle Candy Company");
+        pitchDetails0.setPitchBlurb("At Diabetes BC, we are looking for suggestions on how we should jump into action this spring.");
+        pitchDetails0.setPitchSponsor("Squarespace");
         pitchDetails0.setVideoURL(vidID);
         containingList.add(pitchDetails0);
 
         PitchDetails pitchDetails1 = new PitchDetails();
-        pitchDetails1.setFragmentTag("Diabetes_BC_TAG");
-        pitchDetails1.setPitchCompany("Diabetes British Columbia");
-        pitchDetails1.setPitchCampaignName("Spring into Action");
-        pitchDetails1.setPitchBlurb("PITCH_BLURB_DBC");
+        pitchDetails1.setFragmentTag("Next_Big_ThingTAG");
+        pitchDetails1.setPitchCompany("The Next Big Thing");
+        pitchDetails1.setPitchCampaignName("Social Media Optimisation");
+        pitchDetails1.setPitchBlurb("The Next Big Thing needs help with its Social Media account. How can we make it more efficient?");
         pitchDetails1.setPitchSponsor("Nestle Candy Company");
         pitchDetails1.setVideoURL("2udeiQ3-rJk");
         containingList.add(pitchDetails1);
@@ -67,21 +67,11 @@ public class PitchScrollActivity extends YouTubeBaseActivity implements Pitch.On
         PitchDetails pitchDetails2 = new PitchDetails();
         pitchDetails2.setFragmentTag("CFB_TAG");
         pitchDetails2.setPitchCompany("The Canadian Federation of the Blind");
-        pitchDetails2.setPitchCampaignName("Nov 3rd - National Awareness Day");
-        pitchDetails2.setPitchBlurb("PITCH_BLURB_CFB");
+        pitchDetails2.setPitchCampaignName("Dec 3rd - International Awareness Day");
+        pitchDetails2.setPitchBlurb("Dec 3rd is International Awareness Day for disabilities, and we want to make a big splash.");
         pitchDetails2.setPitchSponsor("Telus");
         pitchDetails2.setVideoURL("XEk6grcrdWE");
         containingList.add(pitchDetails2);
 
-        for (int i = 0; i < 2; i++) {
-            PitchDetails pitchDetails = new PitchDetails();
-            pitchDetails.setFragmentTag("PITCH_FRAGMENT_TAG_" + Integer.toString(i));
-            pitchDetails.setPitchCompany("PITCH COMPANY " + Integer.toString(i));
-            pitchDetails.setPitchCampaignName("PITCH CAMPAIGN " + Integer.toString(i));
-            pitchDetails.setPitchBlurb("PITCH BLURB " + Integer.toString(i));
-            pitchDetails.setPitchSponsor("PITCH SPONSOR " + Integer.toString(i));
-            pitchDetails.setVideoURL(vidID);
-            containingList.add(pitchDetails);
-        }
     }
 }

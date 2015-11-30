@@ -25,12 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:id="@+id/profileLinearLayout">>
-            <fragment
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:name="ca.greyham.socialacademy.ProfileFragment"
-                tools:layout="@layout/fragment_profile" />
+            android:id="@+id/profileLinearLayout">
         </LinearLayout>
 
     </ScrollView>

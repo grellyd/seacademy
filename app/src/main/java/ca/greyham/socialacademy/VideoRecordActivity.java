@@ -21,6 +21,7 @@ public class VideoRecordActivity extends Activity {
 
         //create new Intent
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        intent.putExtra("android.intent.extras.CAMERA_FACING", 1);
 
 //        fileUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);  // create a file to save the video
 //        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
